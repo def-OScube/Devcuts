@@ -1,0 +1,311 @@
+#!/bin/bash
+
+# Define a function to display help information
+show_help() {
+  echo "Usage: open <shortcut>/<route>"
+  echo "Available shortcuts:"
+  echo "  General:"
+  echo "    google         - Open Google"
+  echo "    w3             - Open W3Schools"
+  echo "    yt             - Open YouTube"
+  echo "    fb             - Open Facebook"
+  echo "    insta          - Open Instagram"
+  echo "    github         - Open GitHub"
+  echo "    spotify        - Open Spotify app (if installed)"
+  echo ""
+  echo "  Programming Languages:"
+  echo "    python         - Open Python official website"
+  echo "    java           - Open Java official website"
+  echo "    c++            - Open C++ official website"
+  echo "    ts             - Open TypeScript official website"
+  echo "    go             - Open Go official website"
+  echo "    rust           - Open Rust official website"
+  echo "    php            - Open PHP official website"
+  echo "    ruby           - Open Ruby official website"
+  echo "    objective-c    - Open Objective-C official documentation"
+  echo "    scala          - Open Scala official website"
+  echo "    r              - Open R official website"
+  echo "    lua            - Open Lua official website"
+  echo "    perl           - Open Perl official website"
+  echo "    julia          - Open Julia official website"
+  echo "    haskell        - Open Haskell official website"
+  echo "    elixir         - Open Elixir official website"
+  echo "    clojure        - Open Clojure official website"
+  echo ""
+  echo "  Web Development:"
+  echo "    vuejs          - Open Vue.js official website"
+  echo "    node           - Open Node.js official website"
+  echo "    bun            - Open Bun.sh website"
+  echo "    angular        - Open Angular official website"
+  echo "    react          - Open React official website"
+  echo "    next           - Open Next.js official website"
+  echo "    tailwind       - Open Tailwind CSS official website"
+  echo "    bootstrap      - Open Bootstrap official website"
+  echo "    threejs        - Open Three.js official website"
+  echo "    jquery         - Open jQuery official website"
+  echo "    npm            - Open NPM official website"
+  echo "    yarn           - Open Yarn official website"
+  echo "    express        - Open Express.js official website"
+  echo "    spring.io      - Open Spring official website"
+  echo ""
+  echo "  Tools:"
+  echo "    docker         - Open Docker official website"
+  echo "    git            - Open Git official website"
+  echo "    kubernetes     - Open Kubernetes official website"
+  echo "    jenkins        - Open Jenkins official website"
+  echo "    nginx          - Open Nginx official website"
+  echo "    ansible        - Open Ansible official website"
+  echo ""
+  echo "  Data Science & AI:"
+  echo "    pandas         - Open Pandas official website"
+  echo "    numpy          - Open NumPy official website"
+  echo "    matplotlib     - Open Matplotlib official website"
+  echo "    tensorflow     - Open TensorFlow official website"
+  echo "    keras          - Open Keras official website"
+  echo "    scikit         - Open Scikit-learn official website"
+  echo "    scipy          - Open SciPy official website"
+  echo "    pytorch        - Open PyTorch official website"
+  echo "    lightgbm       - Open LightGBM official website"
+  echo "    seaborn        - Open Seaborn official website"
+  echo "    theano         - Open Theano official website"
+  echo "    beautiful-soup - Open Beautiful Soup official website"
+  echo "    scrapy         - Open Scrapy official website"
+  echo "    bokeh          - Open Bokeh official website"
+  echo ""
+  echo "  Game Development:"
+  echo "    pygame         - Open Pygame official website"
+  echo "    tkinter        - Open Tkinter official documentation"
+  echo ""
+  echo "  Others:"
+  echo "    opencv         - Open OpenCV official website"
+  echo "    pybrain        - Open PyBrain official website"
+  echo "    plotly         - Open Plotly official website"
+  echo "    request        - Open Requests official documentation"
+  echo ""
+  echo "Type 'open -help' to see this list again."
+}
+
+# Check if the user has provided a shortcut or -help
+if [ -z "$1" ]; then
+  echo "Usage: open <shortcut>/<route>"
+  exit 1
+elif [ "$1" == "-help" ]; then
+  show_help
+  exit 0
+fi
+
+# Split the user input into shortcut and route using string manipulation
+shortcut=$(echo "$1" | cut -d'/' -f1)  # Extract shortcut (before '/')
+route=$(echo "$1" | cut -d'/' -f2-)    # Extract route (after '/'), if any
+
+# Define your custom shortcuts to websites and apps
+case "$shortcut" in
+  google)
+    website="https://www.google.com"
+    ;;
+  w3)
+    website="https://www.w3schools.com"
+    ;;
+  yt)
+    website="https://www.youtube.com"
+    ;;
+  fb)
+    website="https://www.facebook.com"
+    ;;
+  insta)
+    website="https://www.instagram.com"
+    ;;
+  github)
+    website="https://www.github.com"
+    ;;
+  gpt)
+    website="https://chatgpt.com"
+    ;;
+  spotify)
+    # Command to open the Spotify app
+    if command -v spotify > /dev/null; then
+      spotify &  # Launch Spotify
+      exit 0
+    else
+      echo "Spotify is not installed."
+      exit 1
+    fi
+    ;;
+  python)
+    website="https://www.python.org"
+    ;;
+  java)
+    website="https://www.java.com/en/"
+    ;;
+  c++)
+    website="https://isocpp.org/"
+    ;;
+  ts)
+    website="https://www.typescriptlang.org/"
+    ;;
+  go)
+    website="https://go.dev/"
+    ;;
+  rust)
+    website="https://www.rust-lang.org/"
+    ;;
+  php)
+    website="https://www.php.net/"
+    ;;
+  ruby)
+    website="https://www.ruby-lang.org/en/"
+    ;;
+  objective-c)
+    website="https://developer.apple.com/documentation/objectivec"
+    ;;
+  scala)
+    website="https://www.scala-lang.org/"
+    ;;
+  r)
+    website="https://www.r-project.org/"
+    ;;
+  lua)
+    website="https://www.lua.org/"
+    ;;
+  perl)
+    website="https://www.perl.org/"
+    ;;
+  julia)
+    website="https://julialang.org/"
+    ;;
+  haskell)
+    website="https://www.haskell.org/"
+    ;;
+  elixir)
+    website="https://elixir-lang.org/"
+    ;;
+  clojure)
+    website="https://clojure.org/"
+    ;;
+  vuejs)
+    website="https://vuejs.org/"
+    ;;
+  node)
+    website="https://nodejs.org/en"
+    ;;
+  bun)
+    website="https://bun.sh/"
+    ;;
+  angular)
+    website="https://angular.dev/"
+    ;;
+  react)
+    website="https://react.dev"
+    ;;
+  next)
+    website="https://nextjs.org"
+    ;;
+  tailwind)
+    website="https://tailwindcss.com/"
+    ;;
+  bootstrap)
+    website="https://getbootstrap.com/"
+    ;;
+  threejs)
+    website="https://threejs.org/"
+    ;;
+  jquery)
+    website="https://jquery.com/"
+    ;;
+  npm)
+    website="https://www.npmjs.com/"
+    ;;
+  yarn)
+    website="https://yarnpkg.com/"
+    ;;
+  express)
+    website="https://expressjs.com/"
+    ;;
+  spring.io)
+    website="https://spring.io/"
+    ;;
+  docker)
+    website="https://www.docker.com/"
+    ;;
+  git)
+    website="https://git-scm.com/"
+    ;;
+  jenkins)
+    website="https://www.jenkins.io/"
+    ;;
+  kubernetes)
+    website="https://kubernetes.io/"
+    ;;
+  ansible)
+    website="https://www.ansible.com/"
+    ;;
+  lightgbm)
+    website="https://lightgbm.readthedocs.io/en/latest/Python-Intro.html"
+    ;;
+  pandas)
+    website="https://pandas.pydata.org/"
+    ;;
+  numpy)
+    website="https://numpy.org/"
+    ;;
+  matplotlib)
+    website="https://matplotlib.org/"
+    ;;
+  tensorflow)
+    website="https://www.tensorflow.org/"
+    ;;
+  keras)
+    website="https://keras.io/"
+    ;;
+  scikit)
+    website="https://scikit-learn.org/stable/"
+    ;;
+  scipy)
+    website="https://scipy.org/"
+    ;;
+  pytorch)
+    website="https://pytorch.org/"
+    ;;
+  request)
+    website="https://requests.readthedocs.io/en/master/"
+    ;;
+  theano)
+    website="https://github.com/Theano/Theano"
+    ;;
+  beautiful-soup)
+    website="https://www.crummy.com/software/BeautifulSoup/bs4/doc/"
+    ;;
+  scrapy)
+    website="https://scrapy.org/"
+    ;;
+  bokeh)
+    website="https://bokeh.org/"
+    ;;
+  pygame)
+    website="https://www.pygame.org/"
+    ;;
+  tkinter)
+    website="https://wiki.python.org/moin/TkInter"
+    ;;
+  opencv)
+    website="https://opencv.org/"
+    ;;
+  pybrain)
+    website="https://pybrain.org/"
+    ;;
+  plotly)
+    website="https://plotly.com/"
+    ;;
+  *)
+    echo "Error: Unknown shortcut '$shortcut'. Type 'open -help' for a list of available shortcuts."
+    exit 1
+    ;;
+esac
+
+# Open the website
+if [ -n "$website" ]; then
+  xdg-open "$website" &  # Use xdg-open for Linux; use 'open' for macOS
+else
+  echo "No website found for the shortcut: $shortcut"
+  exit 1
+fi
